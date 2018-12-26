@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-const CONNECTION_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/notify' 
+const CONNECTION_URI = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/notify' 
 
 mongoose.connect(CONNECTION_URI, {
     useNewUrlParser: true}).then(() => {
