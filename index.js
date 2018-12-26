@@ -12,7 +12,7 @@ app.use(cors());
 
 app.use('/', routes);
 
-server = app.listen(port2, function(){
+server = app.listen(port, function(){
     console.log('server is running on port 8080')
 });
 
