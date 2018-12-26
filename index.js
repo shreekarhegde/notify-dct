@@ -3,8 +3,6 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('./config/db');
 var socket = require('socket.io');
-const port1 = process.env.PORT || 3001;
-const port2 = process.env.PORT || 8080;
 
 const { routes } = require('./config/routes')
 
@@ -41,8 +39,8 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-app.listen(port1, () => {
-    console.log('listening on port', port1);
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
 
