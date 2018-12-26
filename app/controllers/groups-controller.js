@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Group } = require('../models/group');
-const {Activity} = require('../Models/activity')
+const {Activity} = require('../models/activity')
 const { Employee } = require('../models/employee');
 const { Department } = require('../models/department');
 
