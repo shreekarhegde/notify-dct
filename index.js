@@ -3,9 +3,10 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('./config/db');
 var socket = require('socket.io');
-const port = 3001;
+const port1 = process.env.PORT || 3001;
+const port2 = process.env.PORT || 8080;
 
-const { routes } = require('./config/routes');
+const { routes } = require('./config/routes')
 
 
 app.use(express.json());
@@ -13,11 +14,8 @@ app.use(cors());
 
 app.use('/', routes);
 
-app.listen(port, () => {
-    console.log('listening on port', port);
-});
 
-server = app.listen(8080, function(){
+server = app.listen(port2, function(){
     console.log('server is running on port 8080')
 });
 
@@ -30,3 +28,21 @@ io.on('connection', (socket) => {
         io.emit('RECEIVE_MESSAGE', data);
     })
 });
+
+// ... other imports 
+const path = require("path")
+
+// ... other app.use middleware 
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+// ...
+// Right before your app.listen(), add this:
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
+app.listen(port1, () => {
+    console.log('listening on port', port1);
+});
+
+
