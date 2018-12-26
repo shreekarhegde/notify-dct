@@ -12,7 +12,6 @@ app.use(cors());
 
 app.use('/', routes);
 
-
 server = app.listen(port2, function(){
     console.log('server is running on port 8080')
 });
@@ -25,18 +24,6 @@ io.on('connection', (socket) => {
     socket.on('SEND_MESSAGE', function(data){
         io.emit('RECEIVE_MESSAGE', data);
     })
-});
-
-// ... other imports 
-const path = require("path")
-
-// ... other app.use middleware 
-app.use(express.static(path.join(__dirname, "client", "build")))
-
-// ...
-// Right before your app.listen(), add this:
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 app.listen(port, function(){
