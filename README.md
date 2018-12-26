@@ -11,7 +11,7 @@ This project enables the user to create departments, add employees to that depar
 5. socket.io `npm i socket.io`
 6. strftime `npm i strfttime`
 
-# Usage
+# Features
  ## `create, edit, view and delete Departments`
 - get '/departments'
   - See the list of departments.
